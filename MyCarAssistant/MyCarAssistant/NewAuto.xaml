@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCarAssistant.NewAuto" 
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#141414" Margin="55,15,55,10" Padding="10" CornerRadius="10">
+                <Label Text="Добавить авто" TextColor="LightGray" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Frame>
+            <BoxView HeightRequest="1" BackgroundColor="Red" Margin="15,0,15,15"/>
+
+
+            <Frame BackgroundColor="Black" CornerRadius="0" Margin="20,0,20,0" Padding="0">
+                <!--Блок с общими показателями пробега и топлива-->
+                <StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Марка" TextColor="LightGray" Padding="10,10,0,5" VerticalOptions="Center"></Label>
+                        <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                            <Entry   
+                                x:Name="markEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525">
+                            </Entry>
+                        </Frame>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Модель" TextColor="LightGray" Padding="10,5,0,10" VerticalOptions="Center">
+
+                        </Label>
+                        <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                            <Entry   
+                                x:Name="modelEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525">
+                            </Entry>
+                        </Frame>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Год выпуска" TextColor="LightGray" Padding="10,5,0,10" VerticalOptions="Center">
+
+                        </Label>
+                        <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                            <Entry   
+                                x:Name="yearEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525"
+                                Keyboard="Numeric">
+                            </Entry>
+                        </Frame>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Объём двигателя" TextColor="LightGray" Padding="10,5,0,10" VerticalOptions="Center">
+
+                        </Label>
+                        <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                            <Entry   
+                                x:Name="engineCapacityEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525"
+                                Keyboard="Numeric">
+                            </Entry>
+                        </Frame>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Мощность (л/с)" TextColor="LightGray" Padding="10,5,0,10" VerticalOptions="Center">
+
+                        </Label>
+                        <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                            <Entry   
+                                x:Name="powerEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525"
+                                Keyboard="Numeric">
+                            </Entry>
+                        </Frame>
+                    </Grid>
+
+                </StackLayout>
+            </Frame>
+            <Label Text="VIN-номер авто" TextColor="#404040" Margin="20,10,20,0"></Label>
+            <BoxView HeightRequest="1" BackgroundColor="#404040" Margin="20,0,20,0"></BoxView>
+            <Frame Padding="0" BackgroundColor="#252525" Margin="20,0,20,0" CornerRadius="10">
+                <!--Блок с ВИН номером-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.001*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="VIN:" Padding="8,5,0,5" FontSize="20" FontAttributes="Bold" TextColor="LightGray" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                    <Entry x:Name="vinEntry" Grid.Column="2" TextColor="White" Margin="5,0,15,0" TextTransform="Uppercase" MaxLength="17">
+                        <!--Поле ввода Vin номера-->
+
+                    </Entry>
+                    <BoxView BackgroundColor="Red" WidthRequest="1" Grid.Column="1"></BoxView>
+                </Grid>
+            </Frame>
+            <Label Text="Пробег авто (км)" TextColor="#404040" Margin="20,5,20,0"></Label>
+            <BoxView HeightRequest="1" BackgroundColor="#404040" Margin="20,0,20,0"></BoxView>
+            <Frame Padding="0" BackgroundColor="#252525" Margin="20,0,20,0" CornerRadius="10">
+                <!--Блок с полем ввода Пробега-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.001*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Пробег:" Padding="8,5,0,5" FontSize="16" FontAttributes="Bold" TextColor="LightGray" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                    <Entry x:Name="mileageEntry" Grid.Column="2" TextColor="White" Margin="5,0,15,0" HorizontalOptions="Fill" VerticalOptions="Center" Keyboard="Numeric">
+
+                    </Entry>
+                    <BoxView BackgroundColor="Red" WidthRequest="1" Grid.Column="1"></BoxView>
+                </Grid>
+            </Frame>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Margin="45,20,5,0" Padding="0" BackgroundColor="#141414" CornerRadius="5">
+                    <Button 
+                        Clicked="AddCarButton_Clicked"
+                        Text="Добавить" 
+                        TextColor="Red" 
+                        BackgroundColor="#141414"/>
+                </Frame>
+
+                <Frame Margin="5,20,45,0" Padding="0" Grid.Column="1" BackgroundColor="#141414" CornerRadius="5">
+                    <Button 
+                        Clicked="CancelButton_Clicked"
+                        Text="Отменить" 
+                        TextColor="Red" 
+                        BackgroundColor="#141414"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

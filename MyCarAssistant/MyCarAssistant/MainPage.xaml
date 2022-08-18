@@ -1,0 +1,1175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--СТИЛИ ДЛЯ ВСПЛЫВАЮЩЕГО МЕНЮ И ШАПКИ С НАВИГАЦИЕЙ!-->
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCarAssistant.MainPage"
+                    Shell.BackgroundColor="#141414"
+                    Shell.ForegroundColor="Red"
+                    Shell.TitleColor="Red"
+                    Shell.DisabledColor="Red"
+                    Shell.UnselectedColor="#858586"
+                    
+                    
+                    
+                    FlyoutWidth="250"
+                    FlyoutBackground="LightGray"
+                    FlyoutIcon="menu.png">
+
+    <FlyoutItem Title="Главная"
+                Icon="home.png">
+        <!--ДИЗАЙН ВСПЛЫШАЮЩЕГО МЕНЮ ДЛЯ ОТДЕЛЬНОГО ОБЪЕКТА!-->
+
+        <Tab Title="Главная"
+             Icon="home.png">
+            <ShellContent>
+                <ContentPage BackgroundColor="Black">
+                    <Shell.TitleView>
+                        <!--Шапка приложения. Данный тэг есть на всех страницах-->
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.65*"/>
+                                    <ColumnDefinition Width="0.15*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Главная" 
+                               TextColor="LightGray"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               Margin="85,0,0,0"
+                               FontSize="20"/>
+
+                                <Frame Grid.Column="1" BackgroundColor="#141414" Padding="9,15,9,15">
+                                    <ImageButton
+                                        Source="Pancil.png"
+                                        BackgroundColor="#141414" 
+                                        Clicked="RedactCurrentAutoButton_Clicked"/>
+                                </Frame>
+                                <Button 
+                                    Grid.Column="2" 
+                                    Text="+" 
+                                    FontSize="40" 
+                                    Padding="0,0,0,10"  
+                                    TextColor="Red" 
+                                    BackgroundColor="#141414"
+                                    Clicked="AddNewAutoButton_Clicked"/>
+
+                            </Grid>
+
+                        </Frame>
+                    </Shell.TitleView>
+                    <ScrollView>
+                        <StackLayout>
+
+                            <Frame Margin="70,10,70,10" CornerRadius="20"
+                               AbsoluteLayout.LayoutBounds="0,5"
+                               AbsoluteLayout.LayoutFlags="XProportional"
+                               Padding="30,0,30,0"
+                               BackgroundColor="#141414">
+                                <!-- Нужно добавить обработчик событий для Picker (Код ниже)-->
+                                <Picker 
+                                    x:Name="picker" 
+                                    HorizontalTextAlignment="Center"
+                                    SelectedIndexChanged="Picker_SelectedIndexChanged"
+                                    HorizontalOptions="Center" 
+                                    VerticalOptions="Center" 
+                                    TextColor="Red" 
+                                    FontAttributes="Bold" 
+                                    FontSize="20">
+                                </Picker>
+                            </Frame>
+
+                            <Image Source="GlavAuto.png"/>
+                            <!-- Картинка и красная линия -->
+                            <BoxView HeightRequest="1" Color="red" Margin="20,10,20,10"></BoxView>
+
+                            <Frame Padding="0" BackgroundColor="#252525" Margin="20,0,20,0" CornerRadius="10">
+                                <!--Блок с ВИН номером-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"/>
+                                        <ColumnDefinition Width="0.001*"/>
+                                        <ColumnDefinition Width="0.7*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="VIN:" Padding="8,5,0,5" FontSize="20" FontAttributes="Bold" TextColor="LightGray" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                                    <Label 
+                                        x:Name="currentVINLabel" 
+                                        Grid.Column="2" 
+                                        TextColor="White" 
+                                        Margin="5,0,15,0" 
+                                        TextTransform="Uppercase"
+                                        VerticalOptions="Center"
+                                        FontSize="20">
+                                        <!--Поле ввода Vin номера-->
+
+                                    </Label>
+                                    <BoxView BackgroundColor="Red" WidthRequest="1" Grid.Column="1"></BoxView>
+                                </Grid>
+                            </Frame>
+
+                            <Label Text="Характеристики авто" TextColor="#404040" Margin="20,0,20,0"></Label>
+                            <BoxView HeightRequest="1" BackgroundColor="#404040" Margin="20,0,20,0"></BoxView>
+
+                            <Frame Margin="20,0,20,0" BackgroundColor="#252525" CornerRadius="10" Padding="0">
+                                <!--Блок характеристики Авто-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="1"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="1"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="1"/>
+                                        <RowDefinition Height="55"/>
+
+
+
+                                    </Grid.RowDefinitions>
+                                    <Label Text="Марка" TextColor="LightGray" FontSize="16" VerticalOptions="Center" Padding="10,5,0,0"></Label>
+                                    <Label Grid.Row="2" Text="Модель" TextColor="LightGray" FontSize="16" VerticalOptions="Center" Padding="10,5,0,0"></Label>
+                                    <Label Grid.Row="4" Text="Год выпуска" TextColor="LightGray" FontSize="16" VerticalOptions="Center" Padding="10,5,0,0"></Label>
+                                    <Label Grid.Row="6" Text="Объём/мощность" TextColor="LightGray" FontSize="16" VerticalOptions="Center" Padding="10,5,0,8"></Label>
+                                    <BoxView Grid.Row="1" Grid.Column="1"  BackgroundColor="#141414" Margin="0"></BoxView>
+                                    <BoxView Grid.Row="1" Grid.Column="0"  BackgroundColor="#141414"></BoxView>
+                                    <BoxView Grid.Row="3" Grid.Column="1"  BackgroundColor="#141414"></BoxView>
+                                    <BoxView Grid.Row="3" Grid.Column="0"  BackgroundColor="#141414"></BoxView>
+                                    <BoxView Grid.Row="5" Grid.Column="1"  BackgroundColor="#141414"></BoxView>
+                                    <BoxView Grid.Row="5" Grid.Column="0"  BackgroundColor="#141414"></BoxView>
+                                    <!--Для данных из бд -->
+                                    <Label x:Name="currentMarkLabel" Grid.Column="1" TextColor="LightGray" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" Padding="10,5,0,0"></Label>
+                                    <Label x:Name="currentModelLabel" Grid.Row="2" Grid.Column="1" TextColor="LightGray" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" Padding="10,5,0,0"></Label>
+                                    <Label x:Name="currentYearLabel" Grid.Row="4" Grid.Column="1" TextColor="LightGray" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" Padding="10,5,0,0"></Label>
+                                    <Label x:Name="currentCapaPowerLabel" Grid.Row="6" Grid.Column="1" TextColor="LightGray" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" Padding="10,5,0,0"></Label>
+                                </Grid>
+                            </Frame>
+
+                            <Label Text="Показатель пробега (км)" TextColor="#404040" Margin="20,0,20,0"></Label>
+                            <BoxView HeightRequest="1" BackgroundColor="#404040" Margin="20,0,20,0"></BoxView>
+
+                            <Frame Padding="0" BackgroundColor="#252525" Margin="20,0,20,0" CornerRadius="10">
+                                <!--Блок с полем ввода Пробега-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"/>
+                                        <ColumnDefinition Width="0.001*"/>
+                                        <ColumnDefinition Width="0.7*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="Пробег:" Padding="8,5,0,5" FontSize="16" FontAttributes="Bold" TextColor="LightGray" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                                    <Label x:Name="currentMileageLabel" Grid.Column="2" TextColor="White" Margin="5,0,15,0"  VerticalOptions="Center" FontSize="17"></Label>
+                                    <BoxView BackgroundColor="Red" WidthRequest="1" Grid.Column="1"></BoxView>
+                                </Grid>
+                            </Frame>
+
+                            <Label Text="Общие показатели" TextColor="#404040" Margin="20,0,20,0"></Label>
+                            <BoxView HeightRequest="1" BackgroundColor="#404040" Margin="20,0,20,0"></BoxView>
+
+                            <Frame BackgroundColor="#252525" CornerRadius="10" Margin="20,0,20,0" Padding="0">
+                                <!--Блок с общими показателями пробега и топлива-->
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.4*"/>
+                                            <ColumnDefinition Width="0.6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="Пробег" TextColor="LightGray" Padding="10,10,0,5" FontSize="16"></Label>
+                                        <Label x:Name="currentMileageGeneralLabel" Grid.Column="1" TextColor="White" Padding="10,10,0,5" Margin="10,0,15,0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16"></Label>
+                                    </Grid>
+                                    <BoxView HeightRequest="1" BackgroundColor="#141414" Margin="0"></BoxView>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.4*"/>
+                                            <ColumnDefinition Width="0.6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="Топливо" TextColor="LightGray" Padding="10,5,0,10" FontSize="16"></Label>
+                                        <Label x:Name="currentValueGeneralLabel" Grid.Column="1" TextColor="White" Padding="10,5,0,10" Margin="10,0,15,0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16"></Label>
+
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="20,0,20,0"></BoxView>
+                        </StackLayout>
+                    </ScrollView>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Данные" 
+            Icon="DannieAuto.png">
+            <ShellContent Title="ПТС">
+                <ContentPage
+                    BackgroundColor="black">
+                    <Shell.TitleView>
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Label Text="Данные" 
+                               TextColor="LightGray"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               Margin="85,0,0,0"
+                               FontSize="20"/>
+                        </Frame>
+                    </Shell.TitleView>
+                    <AbsoluteLayout>
+                        <Frame 
+                            AbsoluteLayout.LayoutBounds="0.5,0.3"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            BackgroundColor="Black">
+                            <Label Text="Добавьте фото или документ..."
+                                   TextColor="White"
+                                   FontSize="15"></Label>
+                        </Frame>
+                        <Image x:Name="PTSIMG"/>
+                        <!--Добавление кнопки в виде картинки ПТС-->
+                        <ImageButton
+                            AbsoluteLayout.LayoutBounds="0.5,0.914"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            Source="Plus2.png"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"
+                            BackgroundColor="#141414"
+                            BorderColor="Red"
+                            BorderWidth="2"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            CornerRadius="30"
+                            Clicked="AddPTSImageButton_Clicked">
+                        </ImageButton>
+
+                    </AbsoluteLayout>
+                </ContentPage>
+            </ShellContent>
+
+            <ShellContent Title="Страховка">
+                <ContentPage
+                    BackgroundColor="black">
+                    <Shell.TitleView>
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Label Text="Данные" 
+                               TextColor="LightGray"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               Margin="85,0,0,0"
+                               FontSize="20"/>
+                        </Frame>
+                    </Shell.TitleView>
+                    <AbsoluteLayout>
+                        <Frame 
+                            AbsoluteLayout.LayoutBounds="0.5,0.3"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            BackgroundColor="Black">
+                            <Label Text="Добавьте фото или документ..."
+                                   TextColor="White"
+                                   FontSize="15"></Label>
+
+                        </Frame>
+                        <Image x:Name="STRIMG"/>
+                        <!--Добавление кнопки в виде картинки Страховка-->
+                        <ImageButton
+                            AbsoluteLayout.LayoutBounds="0.5,0.914"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            Source="Plus2.png"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"
+                            BackgroundColor="#141414"
+                            BorderColor="Red"
+                            BorderWidth="2"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            CornerRadius="30"
+                            Clicked="AddSTRImageButton_Clicked">
+
+                        </ImageButton>
+
+                    </AbsoluteLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+
+        <!--ВКЛАДКА ОБСЛУЖИВАНИЕ-->
+
+        <Tab Title="Обслуживание" 
+            Icon="Obslugivanie.png">
+            <ShellContent Title="Предстоящие работы">
+                <ContentPage
+                    BackgroundColor="black">
+                    <Shell.TitleView>
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.8*"/>
+
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Обслуживание" 
+                                   TextColor="LightGray"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"
+                                   Margin="55,0,0,0"
+                                   FontSize="20"/>
+                                <Frame Grid.Column="1" BackgroundColor="#141414" Padding="9,15,9,15">
+                                    <ImageButton  
+                                        Source="Refresh.png"   
+                                        BackgroundColor="#141414" 
+                                        Clicked="RefreshImageButton_Clicked"/>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </Shell.TitleView>
+                    <AbsoluteLayout>
+                        <ScrollView>
+                            <StackLayout>
+                                <Grid HeightRequest="600">
+                                    <CollectionView 
+                                        x:Name="TONewCollectionView"
+                                        SelectionMode="Single"
+                                        SelectionChanged="TOCollectionView_SelectionChanged">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout>
+                                                    <SwipeView BackgroundColor="Black">
+                                                        <!--БЛОК СВАЙПА УДАЛЕНИЯ-->
+                                                        <SwipeView.RightItems>
+                                                            <SwipeItems>
+                                                                <SwipeItem 
+                                                                    Text="Удалить"
+                                                                    IconImageSource="delete.png"
+                                                                    BackgroundColor="Black"
+                                                                    Clicked="TODeleteSwipeItem_Clicked"/>
+                                                            </SwipeItems>
+                                                        </SwipeView.RightItems>
+                                                        <Frame BackgroundColor="#303030" Padding="0" Margin="10,7,10,0" CornerRadius="10">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="0.4*"/>
+                                                                    <ColumnDefinition Width="0.45*"/>
+                                                                    <ColumnDefinition Width="0.15*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="25"/>
+                                                                    <RowDefinition Height="30"/>
+                                                                </Grid.RowDefinitions>
+                                                                <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Padding="10,5,0,0" FontSize="16" FontAttributes="Bold" TextColor="LightGray" Text="{Binding Name}"/>
+                                                                <Label Grid.Row="1" Grid.Column="0" Padding="10,0,0,5" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Gray" FontSize="14" FontAttributes="Italic" Text="{Binding Date}"/>
+                                                                <Label Grid.Row="1" Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Center" HorizontalOptions="End" TextColor="Gray" FontSize="14" FontAttributes="Italic" Text="{Binding Mileage}"/>
+                                                                <Label Grid.Row="0" Grid.Column="1" Padding="0,5,0,0" VerticalOptions="Center" HorizontalOptions="End" TextColor="LightGray" FontSize="16" FontAttributes="Bold" Text="{Binding Sum}"/>
+                                                                <Label Grid.Row="0" Grid.Column="2" Padding="0,5,0,0" VerticalOptions="Center" HorizontalOptions="Start" FontSize="14" FontAttributes="Bold" Text="Руб." TextColor="LightGray"/>
+                                                                <Label Grid.Row="1" Grid.Column="2" Padding="0,0,0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="14" Text="км" TextColor="Gray" FontAttributes="Italic"/>
+                                                            </Grid>
+                                                        </Frame>
+                                                    </SwipeView>
+                                                </StackLayout>
+
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Grid>
+
+                            </StackLayout>
+                        </ScrollView>
+                        <!--Добавление кнопки "Новая запись"-->
+                        <ImageButton
+                            AbsoluteLayout.LayoutBounds="0.5,0.914"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            Source="Plus2.png"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"
+                            BackgroundColor="#141414"
+                            BorderColor="Red"
+                            BorderWidth="2"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            CornerRadius="30"
+                            Clicked="NewTOImageButton_Clicked">
+
+                        </ImageButton>
+                    </AbsoluteLayout>
+                </ContentPage>
+            </ShellContent>
+            <ShellContent Title="Проделанные работы">
+                <ContentPage
+                    BackgroundColor="black">
+                    <Shell.TitleView>
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.8*"/>
+
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                    Text="Обслуживание" 
+                               TextColor="LightGray"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               Margin="55,0,0,0"
+                               FontSize="20"/>
+
+                                <Frame Grid.Column="1" BackgroundColor="#141414" Padding="9,15,9,15">
+                                    <ImageButton  
+                                        Source="Refresh.png"   
+                                        BackgroundColor="#141414" 
+                                        Clicked="RefreshImageButton_Clicked"/>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </Shell.TitleView>
+                    <AbsoluteLayout>
+                        <ScrollView>
+                            <StackLayout>
+                                <Grid HeightRequest="600">
+
+                                    <CollectionView 
+                                        x:Name="TOOldCollectionView"
+                                        SelectionMode="Single"
+                                        SelectionChanged="TOCollectionView_SelectionChanged">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout>
+                                                    <SwipeView BackgroundColor="Black">
+                                                        <!--БЛОК СВАЙПА УДАЛЕНИЯ-->
+                                                        <SwipeView.RightItems>
+                                                            <SwipeItems>
+                                                                <SwipeItem Text="Удалить"
+                                                                        IconImageSource="delete.png"
+                                                                        BackgroundColor="Black"
+                                                                        Clicked="TODeleteSwipeItem_Clicked"/>
+                                                            </SwipeItems>
+                                                        </SwipeView.RightItems>
+                                                        <Frame BackgroundColor="#303030" Padding="0" Margin="10,7,10,0" CornerRadius="10">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="0.4*"/>
+                                                                    <ColumnDefinition Width="0.45*"/>
+                                                                    <ColumnDefinition Width="0.15*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="25"/>
+                                                                    <RowDefinition Height="30"/>
+                                                                </Grid.RowDefinitions>
+                                                                <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Padding="10,5,0,0" FontSize="16" FontAttributes="Bold" TextColor="LightGray" Text="{Binding Name}"/>
+                                                                <Label Grid.Row="1" Grid.Column="0" Padding="10,0,0,5" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Gray" FontSize="14" FontAttributes="Italic" Text="{Binding Date}"/>
+                                                                <Label Grid.Row="1" Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Center" HorizontalOptions="End" TextColor="Gray" FontSize="14" FontAttributes="Italic" Text="{Binding Mileage}"/>
+                                                                <Label Grid.Row="0" Grid.Column="1" Padding="0,5,0,0" VerticalOptions="Center" HorizontalOptions="End" TextColor="LightGray" FontSize="16" FontAttributes="Bold" Text="{Binding Sum}"/>
+                                                                <Label Grid.Row="0" Grid.Column="2" Padding="0,5,0,0" VerticalOptions="Center" HorizontalOptions="Start" FontSize="14" FontAttributes="Bold" Text="Руб." TextColor="LightGray"/>
+                                                                <Label Grid.Row="1" Grid.Column="2" Padding="0,0,0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="14" Text="км" TextColor="Gray" FontAttributes="Italic"/>
+
+
+                                                            </Grid>
+                                                        </Frame>
+                                                    </SwipeView>
+                                                </StackLayout>
+
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+
+                                </Grid>
+                            </StackLayout>
+                        </ScrollView>
+                        <!--Добавление кнопки "Новая запись"-->
+                        <ImageButton
+                            AbsoluteLayout.LayoutBounds="0.5,0.914"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            Source="Plus2.png"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"
+                            BackgroundColor="#141414"
+                            BorderColor="Red"
+                            BorderWidth="2"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            CornerRadius="30"
+                            Clicked="NewTOImageButton_Clicked">
+
+                        </ImageButton>
+                    </AbsoluteLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+
+        <!--ВКЛАДКА ЗАТРАТЫ-->
+
+        <Tab Title="Затраты" 
+            Icon="Zatrati.png">
+            <ShellContent>
+                <ContentPage 
+                    BackgroundColor="black">
+                    <Shell.TitleView>
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.8*"/>
+
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Затраты" 
+                                   TextColor="LightGray"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"
+                                   Margin="85,0,0,0"
+                                   FontSize="20"/>
+                                <Frame Grid.Column="1" BackgroundColor="#141414" Padding="9,15,9,15">
+                                    <ImageButton  
+                                        Source="Refresh.png"   
+                                        BackgroundColor="#141414" 
+                                        Clicked="RefreshImageButton_Clicked"/>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </Shell.TitleView>
+
+                    <AbsoluteLayout>
+                        <ScrollView>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.48*"/>
+                                        <ColumnDefinition Width="0.12*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Общая сумма затрат" TextColor="Gray" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,5,0,0"/>
+                                    <Label x:Name="SummOfExpanses" Grid.Column="1" Text="10000" TextColor="Gray" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="Center" Padding="0,5,0,0"/>
+                                    <Label Grid.Column="2" Text="Руб." TextColor="Gray" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,5,15,0"/>
+                                </Grid>
+                                <BoxView BackgroundColor="#303030" HeightRequest="1"/>
+                                <Grid HeightRequest="622">
+                                    <CollectionView 
+                                        x:Name="ExpensCollectionView"
+                                        SelectionMode="Single"
+                                        SelectionChanged="ExpensCollectionView_SelectionChanged">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout>
+                                                    <SwipeView BackgroundColor="Black">
+                                                        <!--БЛОК СВАЙПА УДАЛЕНИЯ-->
+                                                        <SwipeView.RightItems>
+                                                            <SwipeItems>
+                                                                <SwipeItem Text="Удалить"
+                                                                    IconImageSource="delete.png"
+                                                                    BackgroundColor="Black"
+                                                                    Clicked="ExpensDeleteSwipeItem_Clicked"/>
+                                                            </SwipeItems>
+                                                        </SwipeView.RightItems>
+
+                                                        <Frame BackgroundColor="#303030" Padding="0" Margin="10,7,10,0" CornerRadius="10">
+                                                            <StackLayout>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="0.55*"/>
+                                                                        <ColumnDefinition Width="0.30*"/>
+                                                                        <ColumnDefinition Width="0.15*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Label Grid.Row="0" Grid.Column="1" Padding="0,5,0,0" VerticalOptions="Center" HorizontalOptions="End" TextColor="LightGray" FontSize="16" FontAttributes="Bold" Text="{Binding Sum}"/>
+                                                                    <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Padding="10,5,0,0" FontSize="16" FontAttributes="Bold" TextColor="LightGray" Text="{Binding Text}"/>
+                                                                    <Label Grid.Row="0" Grid.Column="2" Padding="0,5,0,0" VerticalOptions="Center" HorizontalOptions="Start" FontSize="14" FontAttributes="Bold" Text="Руб." TextColor="LightGray"/>
+                                                                </Grid>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="0.45*"/>
+                                                                        <ColumnDefinition Width="0.20*"/>
+                                                                        <ColumnDefinition Width="0.10*"/>
+                                                                        <ColumnDefinition Width="0.21*"/>
+                                                                        <ColumnDefinition Width="0.18*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Label Grid.Column="0"  Padding="10,0,0,5" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Gray" FontSize="14" FontAttributes="Italic" Text="{Binding Date}"/>
+                                                                    <Label Grid.Column="1"  Padding="10,0,0,5" VerticalOptions="Center" HorizontalOptions="End" TextColor="Gray" FontSize="14" FontAttributes="Italic" Text="{Binding Volume}"/>
+                                                                    <Label Grid.Column="3" HorizontalOptions="End" TextColor="Gray" FontSize="14" FontAttributes="Italic" Text="{Binding Cost}"/>
+                                                                    <Label Grid.Column="4" Padding="0,0,5,0" VerticalOptions="Start" HorizontalOptions="Start" FontSize="14" FontAttributes="Italic" Text="Руб/л" TextColor="Gray" Margin="0,0,0,0"/>
+                                                                    <Label Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Start" FontSize="14" FontAttributes="Italic" Text="л." TextColor="Gray" Padding="0" />
+                                                                </Grid>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </SwipeView>
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Grid>
+                            </StackLayout>
+                        </ScrollView>
+                        <ImageButton
+                            AbsoluteLayout.LayoutBounds="0.5,0.9215"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            Source="Plus2.png"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"
+                            BackgroundColor="#141414"
+                            BorderColor="Red"
+                            BorderWidth="2"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            CornerRadius="30"
+                            Clicked="NewExpensButton_Clicked">
+                        </ImageButton>
+                    </AbsoluteLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+
+        <!--ВКЛАДКА ЗАПИСИ-->
+
+        <Tab Title="Записи" 
+            Icon="Zapisi.png">
+            <ContentPage
+                    BackgroundColor="black">
+                <Shell.TitleView>
+                    <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Записи" 
+                                   TextColor="LightGray"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"
+                                   Margin="85,0,0,0"
+                                   FontSize="20"/>
+                            <Frame Grid.Column="1" BackgroundColor="#141414" Padding="9,15,9,15">
+                                <ImageButton  
+                                        Source="Refresh.png"   
+                                        BackgroundColor="#141414" 
+                                        Clicked="RefreshImageButton_Clicked"/>
+                            </Frame>
+                        </Grid>
+                    </Frame>
+                </Shell.TitleView>
+                <AbsoluteLayout>
+                    <ScrollView>
+                        <StackLayout>
+                            <Grid HeightRequest="656">
+                                <CollectionView 
+                                        x:Name="RecordCollectionView"
+                                        SelectionMode="Single"
+                                        SelectionChanged="RecordCollectionView_SelectionChanged">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout>
+                                                <SwipeView BackgroundColor="Black">
+                                                    <!--БЛОК СВАЙПА УДАЛЕНИЕ-->
+                                                    <SwipeView.RightItems>
+                                                        <SwipeItems>
+                                                            <SwipeItem 
+                                                                Text="Удалить"
+                                                                IconImageSource="delete.png"
+                                                                BackgroundColor="Black"
+                                                                Clicked="RecordDeleteSwipeItem_Clicked"/>
+                                                        </SwipeItems>
+                                                    </SwipeView.RightItems>
+
+                                                    <Frame BackgroundColor="#303030" Padding="0" Margin="10,7,10,0" CornerRadius="10">
+                                                        <StackLayout>
+                                                            <Grid>
+
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="0.6*"/>
+                                                                    <ColumnDefinition Width="0.4*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" Padding="0,5,15,0" FontSize="16" TextColor="LightGray" FontAttributes="Bold" Text="{Binding Phone}"/>
+                                                                <Label Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="Start" Padding="10,5,0,0" FontSize="16" FontAttributes="Bold" TextColor="LightGray" Text="{Binding Text}"/>
+                                                            </Grid>
+                                                            <Label Padding="10,5,0,5" TextColor="Gray" FontAttributes="Italic" FontSize="14" VerticalOptions="Center" HorizontalOptions="Start" Text="{Binding Address}"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                </SwipeView>
+                                            </StackLayout>
+
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                            </Grid>
+
+                        </StackLayout>
+
+
+
+                    </ScrollView>
+                    <!--Добавление кнопки "Новая запись" старые записи-->
+                    <ImageButton
+                            AbsoluteLayout.LayoutBounds="0.5,0.914"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            Source="Plus2.png"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End"
+                            BackgroundColor="#141414"
+                            BorderColor="Red"
+                            BorderWidth="2"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            CornerRadius="30"
+                            Clicked="NewRecordButton_Clicked">
+
+                    </ImageButton>
+                </AbsoluteLayout>
+            </ContentPage>
+
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Авто"
+                Icon="Auto.png">
+        <!--ВКЛАДКА БОКОВОГО МЕНЮ АВТО-->
+        <Tab Title="Авто"
+             Icon="Auto.png">
+            <ShellContent>
+                <ContentPage 
+                    BackgroundColor="black">
+                    <Shell.TitleView>
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Label Text="Авто" 
+                               TextColor="LightGray"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               Margin="100,0,0,0"
+                               FontSize="20"/>
+                        </Frame>
+                    </Shell.TitleView>
+                    <StackLayout>
+                        <Frame BackgroundColor="#141414" Margin="55,15,55,10" Padding="10" CornerRadius="10">
+                            <Label Text="Изменить данные" TextColor="LightGray" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Frame>
+                        <BoxView HeightRequest="1" BackgroundColor="Red" Margin="15,0,15,15"/>
+
+
+                        <Frame BackgroundColor="Black" CornerRadius="0" Margin="20,0,20,0" Padding="0">
+                            <!--Блок с общими показателями пробега и топлива-->
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Марка" TextColor="LightGray" Padding="10,10,0,5" VerticalOptions="Center"></Label>
+                                    <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                                        <Entry   
+                                x:Name="redactAutoMarkEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525">
+                                        </Entry>
+                                    </Frame>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Модель" TextColor="LightGray" Padding="10,5,0,10" VerticalOptions="Center">
+
+                                    </Label>
+                                    <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                                        <Entry   
+                                                x:Name="redactAutoModelEntry"
+                                                TextColor="White"
+                                                ClearButtonVisibility="WhileEditing"
+                                                BackgroundColor="#252525">
+                                        </Entry>
+                                    </Frame>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Год выпуска" TextColor="LightGray" Padding="10,5,0,10" VerticalOptions="Center">
+
+                                    </Label>
+                                    <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                                        <Entry   
+                                x:Name="redactAutoYearEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525"
+                                Keyboard="Numeric">
+                                        </Entry>
+                                    </Frame>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Объём двигателя" TextColor="LightGray" Padding="10,5,0,10" VerticalOptions="Center">
+
+                                    </Label>
+                                    <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                                        <Entry   
+                                x:Name="redactAutoEngineCapacityEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525"
+                                Keyboard="Numeric">
+                                        </Entry>
+                                    </Frame>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Мощность (л/с)" TextColor="LightGray" Padding="10,5,0,10" VerticalOptions="Center">
+
+                                    </Label>
+                                    <Frame Grid.Column="1" Padding="5,0,5,0" Margin="0"  BackgroundColor="#252525" CornerRadius="5">
+                                        <Entry   
+                                x:Name="redactAutoPowerEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#252525"
+                                Keyboard="Numeric">
+                                        </Entry>
+                                    </Frame>
+                                </Grid>
+
+                            </StackLayout>
+                        </Frame>
+                        <Label Text="VIN-номер авто" TextColor="#404040" Margin="20,10,20,0"></Label>
+                        <BoxView HeightRequest="1" BackgroundColor="#404040" Margin="20,0,20,0"></BoxView>
+                        <Frame Padding="0" BackgroundColor="#252525" Margin="20,0,20,0" CornerRadius="10">
+                            <!--Блок с ВИН номером-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="0.001*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="VIN:" Padding="8,5,0,5" FontSize="20" FontAttributes="Bold" TextColor="LightGray" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                                <Entry x:Name="redactAutoVINEntry" Grid.Column="2" TextColor="White" Margin="5,0,15,0" TextTransform="Uppercase" MaxLength="17">
+                                    <!--Поле ввода Vin номера-->
+                                    <!-- Изменить X:name-->
+                                </Entry>
+                                <BoxView BackgroundColor="Red" WidthRequest="1" Grid.Column="1"></BoxView>
+                            </Grid>
+                        </Frame>
+                        <Label Text="Пробег авто (км)" TextColor="#404040" Margin="20,5,20,0"></Label>
+                        <BoxView HeightRequest="1" BackgroundColor="#404040" Margin="20,0,20,0"></BoxView>
+                        <Frame Padding="0" BackgroundColor="#252525" Margin="20,0,20,0" CornerRadius="10">
+                            <!--Блок с полем ввода Пробега-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="0.001*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Пробег:" Padding="8,5,0,5" FontSize="16" FontAttributes="Bold" TextColor="LightGray" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                                <Entry x:Name="redactAutoMileageEntry" Grid.Column="2" TextColor="White" Margin="5,0,15,0" HorizontalOptions="Fill" VerticalOptions="Center" Keyboard="Numeric">
+                                    <!-- Изменить X:name-->
+                                </Entry>
+                                <BoxView BackgroundColor="Red" WidthRequest="1" Grid.Column="1"></BoxView>
+                            </Grid>
+                        </Frame>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame Margin="45,8,5,0" Padding="0" BackgroundColor="#141414" CornerRadius="5">
+                                <Button 
+                                    Text="Сохранить" 
+                                    Clicked="SaveRedactAutoButton_Clicked"
+                                    TextColor="Red" 
+                                    BackgroundColor="#141414"/>
+                            </Frame>
+
+                            <Frame Margin="5,8,45,0" Padding="0" Grid.Column="1" BackgroundColor="#141414" CornerRadius="5">
+                                <Button 
+                                    Text="Отменить" 
+                                    Clicked="CancelRedactAutoButton_Clicked"
+                                    TextColor="Red" 
+                                    BackgroundColor="#141414"/>
+                            </Frame>
+                        </Grid>
+
+                        <Frame Margin="85,25,85,0" Padding="0" BackgroundColor="#141414" CornerRadius="5">
+                            <Button 
+                                Text="Удалить авто" 
+                                Clicked="DeleteRedactAutoButton_Clicked"
+                                TextColor="Red" 
+                                BackgroundColor="#141414"/>
+                        </Frame>
+
+
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Профиль"
+        Icon="User.png">
+        <!--Подумать как лучше сделать уведомления для одного переключателя слишком много целой страницы приложения-->
+        <Tab Title="Профиль"
+             Icon="User.png">
+            <ShellContent>
+                <ContentPage
+                    BackgroundColor="black">
+                    <Shell.TitleView>
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Label Text="Профиль" 
+                               TextColor="LightGray"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               Margin="80,0,0,0"
+                               FontSize="20"/>
+                        </Frame>
+                    </Shell.TitleView>
+                    <StackLayout>
+                        <Image Source="Profil.png" 
+                               HorizontalOptions="Center" 
+                               Margin="0,15,0,0"/>
+
+                        <Label Text="Настройки профиля" 
+                               TextColor="LightGray" 
+                               FontSize="25" 
+                               HorizontalOptions="Center" 
+                               Margin="0,5,0,10"></Label>
+                        <BoxView Color="Red" 
+                                 HeightRequest="1" 
+                                 Margin="15,0,15,0"/>
+
+                        <Frame Margin="15,15,15,7" 
+                               BackgroundColor="#252525"
+                               Padding="10"
+                               CornerRadius="10">
+                            <Grid >
+                                <!--Блок ползунка уведомления-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.7*"/>
+                                    <ColumnDefinition Width="0.3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Text="Уведомления" FontSize="16" TextColor="White" Padding="8,0,0,0" VerticalOptions="Center"></Label>
+                                <Switch Grid.Column="1" IsToggled="true" VerticalOptions="Center" Margin="0,0,20,0">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="On">
+                                                <VisualState.Setters>
+                                                    <Setter Property="ThumbColor"
+                                                                        Value="Red" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Off">
+                                                <VisualState.Setters>
+                                                    <Setter Property="ThumbColor"
+                                                                        Value="White" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Switch>
+                            </Grid>
+                        </Frame>
+                        <Label Text="Пользовательские данные" TextColor="#404040" Margin="30,10,0,5" FontSize="16"></Label>
+                        <BoxView HeightRequest="1" Color="#404040" Margin="15,0,15,0"/>
+
+                        <Frame
+                            
+                            x:Name="ProfileFrame"
+                            
+                            BackgroundColor="#252525"
+                            Margin="15,0,15,0"
+                            CornerRadius="10"
+                            Padding="10,10,10,20">
+
+                            <Grid>
+                                <!--Блок с информацией о пользователе-->
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+
+                                <Label  Text="* Логин:" TextColor="LightGray" Padding="8,14,5,0" FontSize="16"></Label>
+                                <!--Добавить теги для данных из бд-->
+                                <Label  Grid.Row="1" Text="* Пароль:" TextColor="LightGray" Padding="8,14,5,0" FontSize="16"></Label>
+                                <Label  Grid.Row="2"  Text="* Email:" TextColor="LightGray" Padding="8,14,5,0" FontSize="16"></Label>
+
+                                <Entry  Grid.Column="1" 
+                                        x:Name="userLoginEntry"
+                                        TextColor="White"
+                                        ClearButtonVisibility="WhileEditing"
+                                        BackgroundColor="#252525"
+                                        IsReadOnly="True">
+                                </Entry>
+                                <Entry  Grid.Column="1" 
+                                        Grid.Row="1"
+                                        x:Name="userPasswordEntry"
+                                        IsPassword="True"
+                                        TextColor="White"
+                                        ClearButtonVisibility="WhileEditing"
+                                        BackgroundColor="#252525"
+                                        IsReadOnly="True">
+                                </Entry>
+                                <Entry  Grid.Column="1" 
+                                        Grid.Row="2"
+                                        x:Name="userEmailEntry"
+                                        TextColor="White"
+                                        ClearButtonVisibility="WhileEditing"
+                                        BackgroundColor="#252525"
+                                        Keyboard="Email"
+                                        IsReadOnly="True">
+                                </Entry>
+
+                            </Grid>
+                        </Frame>
+
+                        <Frame Padding="0,0,0,0" 
+                               BackgroundColor="#252525" 
+                               Margin="15,0,15,0" 
+                               CornerRadius="10">
+                            <!--Блок кнопки редактировать запись-->
+                            <Button Text="Редактировать данные" 
+                                    Clicked="RedactUserButton_Clicked"
+                                    TextColor="Red" 
+                                    BackgroundColor="#141414">
+
+                            </Button>
+                        </Frame>
+
+                        <Frame Padding="0,0,0,0" 
+                               BackgroundColor="#252525" 
+                               Margin="15,30,15,0" 
+                               CornerRadius="10">
+                            <!--Блок кнопки ВЫЙТИ-->
+                            <Button Text="Выйти" 
+                                    Clicked="ExitProfileButton_Clicked"
+                                    TextColor="Red" 
+                                    BackgroundColor="#141414">
+
+                            </Button>
+                        </Frame>
+
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="О проекте"
+                Icon="info.png">
+
+        <Tab Title="О проекте"
+             Icon="info.png">
+            <ShellContent>
+                <ContentPage
+                    BackgroundColor="black">
+                    <Shell.TitleView>
+                        <Frame BackgroundColor="#141414"
+                               Padding="0"
+                               Margin="0">
+                            <Label Text="О проекте" 
+                               TextColor="LightGray"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               Margin="80,0,0,0"
+                               FontSize="20"/>
+                        </Frame>
+                    </Shell.TitleView>
+
+                    <StackLayout>
+
+                        <Frame HeightRequest="600"
+                               Margin="10"
+                               BackgroundColor="#141414"
+                               CornerRadius="8">
+                            <ScrollView>
+                                <StackLayout>
+
+                                    <Label Text="Проект «MyCar Assistant»." 
+                                               FontSize="20" 
+                                               TextColor="White" 
+                                               FontAttributes="Bold" 
+                                               HorizontalTextAlignment="Center"/>
+                                    <Label Text="Главным назначением проектирования программы является помощь автовладельцам в систематизации и хранении информации о личном транспортном средстве, об основных характеристиках автомобиля, замене расходных материалов и запчастей, о затратах и многих других деталях, которые входят в функционал мобильного приложения." 
+                                               FontSize="16" 
+                                               TextColor="White" 
+                                               FontAttributes="Bold" 
+                                               HorizontalTextAlignment="Start"/>
+                                    <Label Text="Функционал приложения:"
+                                               FontSize="16" 
+                                               TextColor="White" 
+                                               FontAttributes="Bold" 
+                                               HorizontalTextAlignment="Start"/>
+                                    <Label Text="1) Функция «затраты». Часто автовладельцы не замечают сколько затрат у них уходит на ремонт транспортного средства, а добавление этой функции позволит владельцам не просто отслеживать расходы, но и проводить анализ, и даже знать ориентировочную стоимость покупки новой детали." 
+                                               FontSize="16" 
+                                               TextColor="White" 
+                                               FontAttributes="Bold" 
+                                               HorizontalTextAlignment="Start"/>
+                                    <Label Text="2) Функция «Записи». Эта функция позволяет пользователям приложения планировать какие-то события, к примеру, поездка на технический осмотр, посещение отделения ГИБДД, запись на ремонт и тому подобное." 
+                                               FontSize="16" 
+                                               TextColor="White" 
+                                               FontAttributes="Bold" 
+                                               HorizontalTextAlignment="Start"/>
+                                    <Label Text="3) Функция «Данные». В данном разделе пользователь может добавить фотографии или PDF файлы документов ПТС и страховки." 
+                                               FontSize="16" 
+                                               TextColor="White" 
+                                               FontAttributes="Bold" 
+                                               HorizontalTextAlignment="Start"/>
+                                    <Label Text="4) Функция «Обслуживания». В данном разделе пользователь может фиксировать информацию о ремонте автомобиля." 
+                                               FontSize="16" 
+                                               TextColor="White" 
+                                               FontAttributes="Bold" 
+                                               HorizontalTextAlignment="Start"/>
+
+                                </StackLayout>
+                            </ScrollView>
+                        </Frame>
+
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <!--ШАПКА ВСПЛЫВАЮЩЕГО МЕНЮ!!!!-->
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black"
+                  HeightRequest="50">
+
+                <Label Text="MyCar Assistant"
+                       TextColor="Red"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" 
+                       FontSize="22"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+</Shell>

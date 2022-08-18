@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCarAssistant.AuthorizationPage"
+             BackgroundColor="LightGray">
+   
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+            <Image Source="Obslugivanie.png"
+                   AbsoluteLayout.LayoutBounds="0.5,0.3"
+                   AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                   HeightRequest="100"
+                   WidthRequest="100"/>
+            
+            <Frame AbsoluteLayout.LayoutBounds="0.5,0.1"
+                   AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                   CornerRadius="20" 
+                   BackgroundColor="#141414">
+                <Label Text="MyCar Assistant" FontSize="30" TextColor="White" FontAttributes="Bold"></Label>
+            </Frame>
+            
+            <Frame
+                AbsoluteLayout.LayoutBounds="0.5,0.5"
+                AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                WidthRequest="330"
+                HeightRequest="40"
+                Padding="10,5,5,10"
+                CornerRadius="20"
+                HasShadow="True">
+                <Entry 
+                    x:Name="loginEntry"
+                    Placeholder="Логин..." 
+                    TextColor="Black"
+                    ClearButtonVisibility="WhileEditing"
+                    BackgroundColor="White"></Entry>
+            </Frame>
+
+            <Frame
+                AbsoluteLayout.LayoutBounds="0.5,0.6"
+                AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                WidthRequest="330"
+                HeightRequest="40"
+                Padding="10,5,5,10"
+                CornerRadius="20"
+                HasShadow="True">
+                <Entry 
+                    x:Name="passwordEntry"
+                    Placeholder="Пароль..." 
+                    IsPassword="true" 
+                    TextColor="Black" 
+                    ClearButtonVisibility="WhileEditing"
+                    BackgroundColor="White"
+                    ></Entry>
+            </Frame>
+            
+            <Button Text="Войти" 
+                    AbsoluteLayout.LayoutBounds="0.5,0.7"
+                    AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                    CornerRadius="10"
+                    WidthRequest="150"
+                    FontSize="18"
+                    BackgroundColor="LightGray"
+                    FontAttributes="Bold"
+                    Clicked="AuthorizationButton_Clicked">
+                
+            </Button>
+            
+            <Button Text="Зарегистрироваться" 
+                    AbsoluteLayout.LayoutBounds="0.5,0.95"
+                    AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                    BackgroundColor="LightGray"
+                    CornerRadius="10"
+                    Clicked="RegistrationButton_Clicked">
+            </Button>
+            
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

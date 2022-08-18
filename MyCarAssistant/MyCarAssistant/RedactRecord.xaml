@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCarAssistant.RedactRecord"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Frame Margin="50,15,50,15" BackgroundColor="#141414" Padding="10" CornerRadius="10">
+                <Label Text="Записи" FontSize="20" HorizontalOptions="Center" TextColor="LightGray" FontAttributes="Bold"/>
+            </Frame>
+            <BoxView HeightRequest="1" BackgroundColor="Red" Margin="0,0,0,0"/>
+
+            <Frame Background="#202020" Padding="8">
+                <StackLayout>
+
+                    <Frame Padding="0,0,0,0" BackgroundColor="#303030"  CornerRadius="5" >
+                        <!--Текст записи -->
+                        <Editor x:Name="TextEditor" FontSize="17" Placeholder="Текст записи..." PlaceholderColor="Gray"  TextColor="White" VerticalOptions="Center" HeightRequest="80"/>
+                    </Frame>
+
+                    <Grid>
+                        <!--Телефон-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Телефон" TextColor="LightGray" Padding="10,5,0,0" VerticalOptions="Center" FontSize="17"></Label>
+
+                        <Frame Grid.Column="1" Padding="0,0,0,0"   BackgroundColor="#303030" CornerRadius="5">
+                            <Entry   
+                                x:Name="PhoneEntry"
+                                TextColor="White"
+                                ClearButtonVisibility="WhileEditing"
+                                BackgroundColor="#303030"
+                                MaxLength="12"
+                                FontSize="17" 
+                                Keyboard="Telephone"
+                                Placeholder="Телефон"
+                                PlaceholderColor="Gray">
+                            </Entry>
+                        </Frame>
+                    </Grid>
+                    <Frame Padding="0" Margin="0" CornerRadius="5" BackgroundColor="#303030">
+                        <Grid>
+                            <!--Адрес-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="61"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Адрес" Padding="10,2,0,0" Margin="0" TextColor="LightGray"/>
+
+                            <Editor x:Name="AddressEditor" Grid.Row="1"  TextColor="White" VerticalOptions="Center" FontSize="17" HeightRequest="60"/>
+
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+            </Frame>
+            <Grid>
+                <!--КНОПКИ-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Margin="45,20,5,0" Padding="0" BackgroundColor="#141414" CornerRadius="5">
+                    <Button 
+                        Text="Сохранить" 
+                        TextColor="Red" 
+                        BackgroundColor="#141414"
+                        Clicked="SaveButton_Clicked"/>
+                </Frame>
+
+                <Frame Margin="5,20,45,0" Padding="0" Grid.Column="1" BackgroundColor="#141414" CornerRadius="5">
+                    <Button 
+                        Text="Отменить" 
+                        TextColor="Red" 
+                        BackgroundColor="#141414"
+                        Clicked="CancelButton_Clicked"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

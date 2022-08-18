@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCarAssistant.TOPhoto"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame 
+                BackgroundColor="Black" 
+                Margin="10,10,10,0" 
+                Padding="5,5,5,5" 
+                CornerRadius="5">
+                <Image x:Name="IMG" HeightRequest="450"/>
+            </Frame>
+            <Frame Margin="45,20,45,0" Padding="0" BackgroundColor="#141414" CornerRadius="5">
+                <Button 
+                    Text="Добавить" 
+                    TextColor="Red" 
+                    BackgroundColor="#141414"
+                    Clicked="AddPhotoButton_Clicked"/>
+            </Frame>
+            <Grid>
+                <!--КНОПКИ-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Margin="45,10,5,0" Padding="0" BackgroundColor="#141414" CornerRadius="5">
+                    <Button 
+                        Text="Сохранить" 
+                        TextColor="Red" 
+                        BackgroundColor="#141414"
+                        Clicked="SaveButton_Clicked"/>
+                </Frame>
+
+                <Frame Margin="5,10,45,0" Padding="0" Grid.Column="1" BackgroundColor="#141414" CornerRadius="5">
+                    <Button 
+                        Text="Отменить" 
+                        TextColor="Red" 
+                        BackgroundColor="#141414"
+                        Clicked="CancelButton_Clicked"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
